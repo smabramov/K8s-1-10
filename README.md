@@ -286,6 +286,7 @@ netology1       default         2               2024-11-29 14:59:26.936590668 +0
 
 Удалим netology1:
 
+
 ```
 serg@k8snode:~/git/K8s-1-10/code$ helm uninstall netology1
 release "netology1" uninstalled
@@ -294,7 +295,9 @@ NAME                 TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
 service/kubernetes   ClusterIP   10.152.183.1   <none>        443/TCP   22d
 
 ```
+
 Создаем версию в namespace=app1:
+
 
 ```
 serg@k8snode:~/git/K8s-1-10/code$ helm install netology1 --namespace app1 --create-namespace nginx_chart
