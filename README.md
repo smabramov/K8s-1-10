@@ -212,7 +212,7 @@ spec:
 
 Видим, что версия образа встала 1.20.0, это произошло, потому что при задании условий подстановки переменных было указано, что в первую очередь данные брать из файла с переменными, если в них не будет указано данных, тогда подставлять данные из файла Chart.yaml
 
-
+-----
 
 
 ### Задание 2. Запустить две версии в разных неймспейсах
@@ -221,12 +221,14 @@ spec:
 2. Одну версию в namespace=app1, вторую версию в том же неймспейсе, третью версию в namespace=app2.
 3. Продемонстрируйте результат.
 
+-----
+
 ### Решение
 
 Запустим установку:
 
-```
 
+```
 serg@k8snode:~/git/K8s-1-10/code$ helm install netology1  nginx_chart
 NAME: netology1
 LAST DEPLOYED: Fri Nov 29 14:57:41 2024
@@ -254,6 +256,7 @@ netology1       default         1               2024-11-29 14:57:41.804407264 +0
 ```
 
 Запустим две реплики:
+
 
 ```
 serg@k8snode:~/git/K8s-1-10/code$ helm upgrade --install netology1 --set replicaCount=2 nginx_chart
@@ -324,6 +327,10 @@ NAME            NAMESPACE       REVISION        UPDATED                         
 netology1       app1            1               2024-11-29 15:12:33.705336302 +0300 MSK deployed        netology-0.1.2  1.20.0 
 
 ```
+Создаем вторую версию в namespace=app1:
+
+```
+
 serg@k8snode:~/git/K8s-1-10/code$ helm upgrade --install netology2 --namespace app1 --create-namespace nginx_chart
 Release "netology2" does not exist. Installing it now.
 Error: Unable to continue with install: Service "main" in namespace "app1" exists and cannot be imported into the current release: invalid ownership metadata; annotation validation error: key "meta.helm.sh/release-name" must equal "netology2": current value is "netology1"
