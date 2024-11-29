@@ -106,6 +106,7 @@ spec:
   appVersion: "1.19.0"
 
 ```
+```
 serg@k8snode:~/git/K8s-1-10/code$ helm template nginx_chart
 ---
 # Source: netology/templates/service.yaml
